@@ -7,4 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     
 }
+ body {
+    background: #5c5757;
+ }
 `;
