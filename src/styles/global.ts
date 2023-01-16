@@ -8,6 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     
 }
  body {
-    background: #5c5757;
+    background: #282828;
  }
 `;

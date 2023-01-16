@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import { Link } from "react-router-dom";
 
 import { NavBar } from "../../components/NavBar";
 
-import { Text, TitleHome } from "./styled";
+import { Text, TitleHome, TextLink, BoxCard } from "./styled";
+import { CardMovie } from "../../components/CardMovie";
 
 const moviesURL = process.env.REACT_APP_API;
 const apiKey = process.env.REACT_APP_API_KEY;
+const imageUrl = process.env.REACT_APP_IMG;
 
-interface MovieProps {
+export interface MovieProps {
+  poster_path: string;
   title: string;
   id: number;
   vote_average: number;
@@ -39,11 +42,23 @@ export function Home() {
       {/* <NavBar /> */}
       <Container>
         <TitleHome>Os Filmes mais bem avalidados(pela a TMDB):</TitleHome>
-        {topMovies.length === 0 && <></>}
-        {topMovies.length > 0 &&
-          topMovies.map((movie: MovieProps) => (
-            <Text key={movie.id}>{movie.title}</Text>
-          ))}
+        <Grid container spacing={3}>
+          {topMovies.length === 0 && <></>}
+          {topMovies.length > 0 &&
+            topMovies.map((movie: MovieProps) => (
+              <Grid item xs={3}>
+                <TextLink to={`movie/${movie.id}`}>
+                  <CardMovie
+                    key={movie.id}
+                    title={movie.title}
+                    id={movie.id}
+                    vote_average={movie.vote_average}
+                    poster_path={movie.poster_path}
+                  />
+                </TextLink>
+              </Grid>
+            ))}
+        </Grid>
       </Container>
       <Link to="movie/1">Movie</Link>
     </Box>
