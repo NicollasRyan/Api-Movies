@@ -1,6 +1,7 @@
 import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 import {
   Search,
@@ -8,6 +9,8 @@ import {
   StyledInputBase,
   TextLink,
   NavBarbox,
+  Text,
+  ListSave,
 } from "./styled";
 
 export function NavBar() {
@@ -32,6 +35,10 @@ export function NavBar() {
               <AccountCircle />
             </IconButton>
           </Profile>
+          <ListSave color="inherit">
+            <BookmarkIcon />
+            <Text>Sua Lista</Text>
+          </ListSave>
         </NavBarbox>
       </AppBar>
     </Box>

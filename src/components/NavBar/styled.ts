@@ -1,4 +1,4 @@
-import { Toolbar, InputBase } from "@mui/material";
+import { Toolbar, InputBase, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -27,20 +27,38 @@ export const StyledInputBase = styled(InputBase)`
 
   padding: 5px;
   width: 100%;
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    color: red;
-  }
-  :-ms-input-placeholder {
-    color: red;
-  }
 `;
 
 export const TextLink = styled(Link)`
   text-decoration: none;
   color: white;
+
+  font-weight: 700;
+  font-family: "Poppins";
+  transition: 0.5s;
+
+  &:hover {
+    color: #b2b2b2;
+  }
 `;
 
 export const Profile = styled.div`
   margin-left: 15px;
+
+  &:hover {
+    color: #b2b2b2;
+  }
+`;
+
+export const Text = styled.p`
+  font-size: 15px;
+
+  font-weight: 400;
+  font-family: "Poppins";
+`;
+
+export const ListSave = styled(IconButton)`
+  &:hover {
+    color: #b2b2b2;
+  }
 `;

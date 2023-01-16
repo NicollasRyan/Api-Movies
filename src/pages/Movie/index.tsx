@@ -3,7 +3,7 @@ import { NavBar } from "../../components/NavBar";
 export function Movie() {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <h1>Movie</h1>
     </>
   );
