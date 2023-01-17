@@ -14,6 +14,7 @@ import {
   CardConatiner,
   StarIconMovie,
   ButtonList,
+  CardButton,
 } from "./styled";
 
 const imageUrl = process.env.REACT_APP_IMG;
@@ -24,7 +25,7 @@ export function CardMovie({ poster_path, title, vote_average }: MovieProps) {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="350"
+          height="300"
           alt={title}
           image={imageUrl + poster_path}
         />
@@ -36,9 +37,9 @@ export function CardMovie({ poster_path, title, vote_average }: MovieProps) {
           </NoteBox>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button>+ Adionar a lista</Button>
-      </CardActions>
+      <CardButton>
+        <ButtonList>+ Adionar a lista</ButtonList>
+      </CardButton>
     </CardConatiner>
   );
 }
