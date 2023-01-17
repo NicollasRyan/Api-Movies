@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 import { TextLink, TitleHome, NameMovie } from "../Home/styled";
 import { MovieProps } from "../Home/intex";
+import { Skeletons } from "../../components/Skeletons";
 
 const searchURL = process.env.REACT_APP_SEARCH;
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -36,7 +37,7 @@ export const Search = () => {
         Resultados para: <NameMovie>{query}</NameMovie>
       </TitleHome>
       <Grid container spacing={3}>
-        {movies.length === 0 && <></>}
+        {movies.length === 0 && <Skeletons />}
         {movies.length > 0 &&
           movies.map((movie: MovieProps) => (
             <Grid item xs={3}>
