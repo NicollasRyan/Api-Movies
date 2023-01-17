@@ -8,6 +8,7 @@ import { NavBar } from "../../components/NavBar";
 
 import { Text, TitleHome, TextLink, BoxCard } from "./styled";
 import { CardMovie } from "../../components/CardMovie";
+import { Skeletons } from "../../components/Skeletons";
 
 const moviesURL = process.env.REACT_APP_API;
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -43,7 +44,7 @@ export function Home() {
       <Container>
         <TitleHome>Os Filmes mais bem avalidados(pela a TMDB):</TitleHome>
         <Grid container spacing={3}>
-          {topMovies.length === 0 && <></>}
+          {topMovies.length === 0 && <Skeletons />}
           {topMovies.length > 0 &&
             topMovies.map((movie: MovieProps) => (
               <Grid item xs={3}>
