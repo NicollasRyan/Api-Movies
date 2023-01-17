@@ -12,7 +12,6 @@ import { Skeletons } from "../../components/Skeletons";
 
 const moviesURL = process.env.REACT_APP_API;
 const apiKey = process.env.REACT_APP_API_KEY;
-const imageUrl = process.env.REACT_APP_IMG;
 
 export interface MovieProps {
   poster_path: string;
