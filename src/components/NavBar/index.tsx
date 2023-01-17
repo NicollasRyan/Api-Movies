@@ -1,5 +1,5 @@
+import { useState } from "react";
 import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
@@ -12,8 +12,23 @@ import {
   Text,
   ListSave,
 } from "./styled";
+import { useNavigate } from "react-router-dom";
 
 export function NavBar() {
+  const [search, setSearch] = useState("");
+  const navigete = useNavigate();
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    if (!search) {
+      return;
+    }
+
+    navigete(`/search?q=${search}`);
+    setSearch("");
+  };
+
   return (
     <Box>
       <AppBar position="static">
@@ -21,8 +36,12 @@ export function NavBar() {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             <TextLink to="/">NR Movies</TextLink>
           </Typography>
-          <Search>
-            <StyledInputBase placeholder="Pesquisar filme" />
+          <Search onSubmit={handleSubmit}>
+            <StyledInputBase
+              placeholder="Pesquisar filme"
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            />
           </Search>
           <Profile>
             <IconButton

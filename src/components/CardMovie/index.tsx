@@ -25,7 +25,7 @@ export function CardMovie({ poster_path, title, vote_average }: MovieProps) {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="300"
+          height="400"
           alt={title}
           image={imageUrl + poster_path}
         />

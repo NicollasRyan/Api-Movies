@@ -28,3 +28,8 @@ export const TextLink = styled(Link)`
 export const BoxCard = styled.div`
   width: 100%;
 `;
+
+export const NameMovie = styled.span`
+  margin-left: 10px;
+  color: #ee1518;
+`;
