@@ -1,13 +1,41 @@
+import { Container } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CardMovie } from "../../components/CardMovie";
+import {
+  Content,
+  DateMovie,
+  DateTime,
+  HeaderMovie,
+  ImgMovie,
+  InfoMovie,
+  Overview,
+  PolularityMovie,
+  PosterMovie,
+  SideLeft,
+  SideRight,
+  Tagline,
+  TimeMovie,
+  TitleInfo,
+  TitleMovie,
+  TypeMovie,
+  VoteMovie,
+} from "./styled";
 
 const moviesURL = process.env.REACT_APP_API;
 const apiKey = process.env.REACT_APP_API_KEY;
 
 interface MovieProps {
-  movie: string;
   title: string;
+  release_date: number;
+  runtime: number;
+  vote_average: number;
+  popularity: number;
+  poster_path: string;
+  genres: { number: { name: string } };
+  overview: string;
+  tagline: string;
+  backdrop_path: string;
 }
 
 export function Movie() {
@@ -23,10 +51,49 @@ export function Movie() {
   };
 
   useEffect(() => {
-    const movieUrl = `${moviesURL}${id}?${apiKey}`;
+    const movieUrl = `${moviesURL}${id}?${apiKey}&language=pt-BR`;
 
     getMovies(movieUrl);
   }, []);
 
-  return <>{movie && <h1>{movie.title}</h1>}</>;
+  const imageUrl = process.env.REACT_APP_IMG;
+
+  // const yearMovie = movie?.release_date as unknown as Date;
+  // const movieDate = yearMovie.getFullYear();
+
+  return (
+    <>
+      {movie && (
+        <Container>
+          <HeaderMovie>
+            <SideLeft>
+              <TitleMovie>{movie.title}</TitleMovie>
+              <DateTime>
+                <DateMovie>{movie.release_date}</DateMovie>
+                <TimeMovie>{movie.runtime}</TimeMovie>
+              </DateTime>
+            </SideLeft>
+
+            <SideRight>
+              <VoteMovie>{movie.vote_average}</VoteMovie>
+              <PolularityMovie>{movie.popularity}</PolularityMovie>
+            </SideRight>
+          </HeaderMovie>
+
+          <Content>
+            <PosterMovie>
+              <ImgMovie src={imageUrl + movie.poster_path} alt={movie.title} />
+
+              <Tagline>Uma frase iconica do filme: "{movie.tagline}"</Tagline>
+            </PosterMovie>
+            <InfoMovie>
+              {/* <TypeMovie>{movie.genres.number[0].name}</TypeMovie> */}
+              <TitleInfo>Sinopse</TitleInfo>
+              <Overview>{movie.overview}</Overview>
+            </InfoMovie>
+          </Content>
+        </Container>
+      )}
+    </>
+  );
 }
