@@ -7,6 +7,7 @@ import {
   CardMedia,
 } from "@mui/material";
 import { MovieProps } from "../../pages/Home/intex";
+import { TextLink } from "../NavBar/styled";
 
 import {
   Text,
@@ -19,27 +20,34 @@ import {
 
 const imageUrl = process.env.REACT_APP_IMG;
 
-export function CardMovie({ poster_path, title, vote_average }: MovieProps) {
+export function CardMovie({
+  id,
+  poster_path,
+  title,
+  vote_average,
+}: MovieProps) {
   return (
-    <CardConatiner>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="400"
-          alt={title}
-          image={imageUrl + poster_path}
-        />
-        <CardContent>
-          <Text>{title}</Text>
-          <NoteBox>
-            <StarIconMovie />
-            {vote_average}
-          </NoteBox>
-        </CardContent>
-      </CardActionArea>
-      <CardButton>
-        <ButtonList>+ Adionar a lista</ButtonList>
-      </CardButton>
-    </CardConatiner>
+    <TextLink to={`movie/${id}`}>
+      <CardConatiner>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height="400"
+            alt={title}
+            image={imageUrl + poster_path}
+          />
+          <CardContent>
+            <Text>{title}</Text>
+            <NoteBox>
+              <StarIconMovie />
+              {vote_average}
+            </NoteBox>
+          </CardContent>
+        </CardActionArea>
+        <CardButton>
+          <ButtonList>+ Adionar a lista</ButtonList>
+        </CardButton>
+      </CardConatiner>
+    </TextLink>
   );
 }

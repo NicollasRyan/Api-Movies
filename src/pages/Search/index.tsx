@@ -34,7 +34,7 @@ export const Search = () => {
   return (
     <Container>
       <TitleHome>
-        Resultados para: <NameMovie>{query}</NameMovie>
+        Resultados para: <NameMovie>{query}</NameMovie>:
       </TitleHome>
       <Grid container spacing={3}>
         {movies.length === 0 && <Skeletons />}

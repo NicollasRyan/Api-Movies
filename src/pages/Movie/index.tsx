@@ -1,7 +1,6 @@
 import { Container } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { CardMovie } from "../../components/CardMovie";
 import {
   Content,
   DateMovie,
@@ -22,7 +21,6 @@ import {
   TimeMovie,
   TitleInfo,
   TitleMovie,
-  TypeMovie,
   VoteMovie,
 } from "./styled";
 
@@ -36,7 +34,6 @@ interface MovieProps {
   vote_average: number;
   popularity: number;
   poster_path: string;
-  genres: { number: { name: string } };
   overview: string;
   tagline: string;
   backdrop_path: string;
@@ -52,7 +49,6 @@ export function Movie() {
     const res = await fetch(url);
     const data = await res.json();
 
-    console.log(data);
     setMovie(data);
   };
 

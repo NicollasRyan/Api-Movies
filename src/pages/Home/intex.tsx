@@ -47,20 +47,17 @@ export function Home() {
           {topMovies.length > 0 &&
             topMovies.map((movie: MovieProps) => (
               <Grid item xs={3}>
-                <TextLink to={`movie/${movie.id}`}>
-                  <CardMovie
-                    key={movie.id}
-                    title={movie.title}
-                    id={movie.id}
-                    vote_average={movie.vote_average}
-                    poster_path={movie.poster_path}
-                  />
-                </TextLink>
+                <CardMovie
+                  key={movie.id}
+                  title={movie.title}
+                  id={movie.id}
+                  vote_average={movie.vote_average}
+                  poster_path={movie.poster_path}
+                />
               </Grid>
             ))}
         </Grid>
       </Container>
-      <Link to="movie/1">Movie</Link>
     </Box>
   );
 }

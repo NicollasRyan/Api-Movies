@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 export function NavBar() {
   const [search, setSearch] = useState("");
-  const navigete = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export function NavBar() {
       return;
     }
 
-    navigete(`/search?q=${search}`);
+    navigate(`/search?q=${search}`);
     setSearch("");
   };
 
