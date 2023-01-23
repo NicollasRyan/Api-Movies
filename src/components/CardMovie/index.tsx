@@ -1,13 +1,8 @@
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-} from "@mui/material";
+import { CardActionArea, CardContent, CardMedia } from "@mui/material";
+import { useContext } from "react";
 import { MovieProps } from "../../pages/Home/intex";
 import { TextLink } from "../NavBar/styled";
+import { SaveContext } from "../Save/context/indexContext";
 
 import {
   Text,
@@ -26,9 +21,19 @@ export function CardMovie({
   title,
   vote_average,
 }: MovieProps) {
+  const { setFavorites, favorites } = useContext(SaveContext);
+  const addMoviesToFavorites = (movie: MovieProps) => {
+    setFavorites([...favorites, movie]);
+  };
+  const removeMovie = () => {
+    setFavorites(favorites.filter((movies) => movies.id !== movies.id));
+  };
+
+  const isFavorite = favorites.some((movies) => movies.id === movies.id);
+
   return (
-    <TextLink to={`movie/${id}`}>
-      <CardConatiner>
+    <CardConatiner>
+      <TextLink to={`movie/${id}`}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -44,10 +49,18 @@ export function CardMovie({
             </NoteBox>
           </CardContent>
         </CardActionArea>
-        <CardButton>
-          <ButtonList>+ Adionar a lista</ButtonList>
-        </CardButton>
-      </CardConatiner>
-    </TextLink>
+      </TextLink>
+      <CardButton>
+        <ButtonList
+          onClick={() =>
+            isFavorite
+              ? removeMovie()
+              : addMoviesToFavorites({ title, id, poster_path, vote_average })
+          }
+        >
+          {isFavorite ? "Remover da lista" : "+ Adionar a lista"}
+        </ButtonList>
+      </CardButton>
+    </CardConatiner>
   );
 }

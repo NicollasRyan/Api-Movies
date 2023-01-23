@@ -1,30 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { NavBar } from "./components/NavBar";
+
+import App from "./App";
 import { Home } from "./pages/Home/intex";
 import { Movie } from "./pages/Movie";
 import { Search } from "./pages/Search";
 import { GlobalStyle } from "./styles/global";
+import { Save } from "./components/Save";
+import { SaveProvider } from "./components/Save/context/indexContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route element={<App />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="movie/:id" element={<Movie />} />
-          <Route path="/search/movie/:id" element={<Movie />} />
-        </Route>
-      </Routes>
-      <GlobalStyle />
-    </Router>
+    <SaveProvider>
+      <Router>
+        <Routes>
+          <Route element={<App />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="movie/:id" element={<Movie />} />
+            <Route path="/search/movie/:id" element={<Movie />} />
+            <Route path="/save" element={<Save />} />
+          </Route>
+        </Routes>
+        <GlobalStyle />
+      </Router>
+    </SaveProvider>
   </React.StrictMode>
 );
 

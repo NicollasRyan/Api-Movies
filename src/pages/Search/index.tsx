@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { CardMovie } from "../../components/CardMovie";
 import { Box, Grid } from "@mui/material";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { TextLink, TitleHome, NameMovie } from "../Home/styled";
 import { MovieProps } from "../Home/intex";
 import { Skeletons } from "../../components/Skeletons";
+import { SaveContext } from "../../components/Save/context/indexContext";
 
 const searchURL = process.env.REACT_APP_SEARCH;
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -36,6 +37,7 @@ export const Search = () => {
       <TitleHome>
         Resultados para: <NameMovie>{query}</NameMovie>:
       </TitleHome>
+
       <Grid container spacing={3}>
         {movies.length === 0 && <Skeletons />}
         {movies.length > 0 &&

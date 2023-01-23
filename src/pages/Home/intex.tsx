@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { Box, Grid } from "@mui/material";
 import { Container } from "@mui/system";
@@ -9,6 +9,7 @@ import { NavBar } from "../../components/NavBar";
 import { Text, TitleHome, TextLink, BoxCard } from "./styled";
 import { CardMovie } from "../../components/CardMovie";
 import { Skeletons } from "../../components/Skeletons";
+import { SaveContext } from "../../components/Save/context/indexContext";
 
 const moviesURL = process.env.REACT_APP_API;
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -22,6 +23,7 @@ export interface MovieProps {
 
 export function Home() {
   const [topMovies, setTopMovies] = useState([]);
+  const { favorites } = useContext(SaveContext);
 
   const getTopRatedMovies = async (url: RequestInfo | URL) => {
     const res = await fetch(url);
@@ -39,7 +41,13 @@ export function Home() {
 
   return (
     <Box>
-      {/* <NavBar /> */}
+      <pre>
+        {JSON.stringify(
+          favorites.map((detali) => detali.title),
+          undefined,
+          2
+        )}
+      </pre>
       <Container>
         <TitleHome>Os Filmes mais bem avalidados(pela a TMDB):</TitleHome>
         <Grid container spacing={3}>

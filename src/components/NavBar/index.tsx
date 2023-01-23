@@ -54,7 +54,7 @@ export function NavBar() {
               <AccountCircle />
             </IconButton>
           </Profile>
-          <ListSave color="inherit">
+          <ListSave color="inherit" onClick={() => navigate("/save")}>
             <BookmarkIcon />
             <Text>Sua Lista</Text>
           </ListSave>
