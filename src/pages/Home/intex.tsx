@@ -29,7 +29,7 @@ export function Home() {
     const res = await fetch(url);
     const data = await res.json();
 
-    console.log(data.results);
+    // console.log(data.results);
     setTopMovies(data.results);
   };
 

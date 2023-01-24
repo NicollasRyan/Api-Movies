@@ -25,11 +25,14 @@ export function CardMovie({
   const addMoviesToFavorites = (movie: MovieProps) => {
     setFavorites([...favorites, movie]);
   };
-  const removeMovie = () => {
-    setFavorites(favorites.filter((movies) => movies.id !== movies.id));
+  const removeMovie = (filme: MovieProps) => {
+    setFavorites(favorites.filter((movies) => movies.id !== filme.id));
   };
 
-  const isFavorite = favorites.some((movies) => movies.id === movies.id);
+  const isFavorite = favorites.filter((movies) => {
+    // console.log(movies);
+    return movies.id === movies.id;
+  });
 
   return (
     <CardConatiner>
@@ -52,13 +55,30 @@ export function CardMovie({
       </TextLink>
       <CardButton>
         <ButtonList
-          onClick={() =>
-            isFavorite
-              ? removeMovie()
-              : addMoviesToFavorites({ title, id, poster_path, vote_average })
-          }
+          onClick={() => {
+            console.log(isFavorite, id);
+            isFavorite && isFavorite.length > 0
+              ? isFavorite.map((item) => {
+                  if (item.id === id)
+                    removeMovie({ title, id, poster_path, vote_average });
+                })
+              : addMoviesToFavorites({
+                  title,
+                  id,
+                  poster_path,
+                  vote_average,
+                });
+          }}
         >
-          {isFavorite ? "Remover da lista" : "+ Adionar a lista"}
+          {isFavorite && isFavorite.length > 0
+            ? isFavorite.map((item) => {
+                if (item.id === id) {
+                  return "remover da lista";
+                } else {
+                  return "Adicionar lista";
+                }
+              })
+            : "Adicionar lista"}
         </ButtonList>
       </CardButton>
     </CardConatiner>
