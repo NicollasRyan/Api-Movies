@@ -1,14 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { CardMovie } from "../../components/CardMovie";
-import { Box, Grid } from "@mui/material";
-import { Container } from "@mui/system";
-import { Link } from "react-router-dom";
+import { Grid, Container } from "@mui/material";
 
-import { TextLink, TitleHome, NameMovie } from "../Home/styled";
+import { CardMovie } from "../../components/CardMovie";
 import { MovieProps } from "../Home/intex";
 import { Skeletons } from "../../components/Skeletons";
-import { SaveContext } from "../../components/Save/context/indexContext";
+
+import { TitleHome, NameMovie } from "../Home/styled";
 
 const searchURL = process.env.REACT_APP_SEARCH;
 const apiKey = process.env.REACT_APP_API_KEY;

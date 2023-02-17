@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+import { AppBar, Box, IconButton, Typography } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
@@ -12,7 +14,6 @@ import {
   Text,
   ListSave,
 } from "./styled";
-import { useNavigate } from "react-router-dom";
 
 export function NavBar() {
   const [search, setSearch] = useState("");

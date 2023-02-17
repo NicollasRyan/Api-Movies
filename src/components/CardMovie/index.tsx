@@ -1,9 +1,10 @@
-import { CardActionArea, CardContent, CardMedia } from "@mui/material";
 import { useContext } from "react";
+import { CardActionArea, CardContent, CardMedia } from "@mui/material";
+
 import { MovieProps } from "../../pages/Home/intex";
-import { TextLink } from "../NavBar/styled";
 import { SaveContext } from "../Save/context/indexContext";
 
+import { TextLink } from "../NavBar/styled";
 import {
   Text,
   NoteBox,

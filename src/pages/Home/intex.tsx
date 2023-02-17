@@ -2,14 +2,12 @@ import { useState, useEffect, useContext } from "react";
 
 import { Box, Grid } from "@mui/material";
 import { Container } from "@mui/system";
-import { Link } from "react-router-dom";
 
-import { NavBar } from "../../components/NavBar";
-
-import { Text, TitleHome, TextLink, BoxCard } from "./styled";
 import { CardMovie } from "../../components/CardMovie";
 import { Skeletons } from "../../components/Skeletons";
 import { SaveContext } from "../../components/Save/context/indexContext";
+
+import { TitleHome } from "./styled";
 
 const moviesURL = process.env.REACT_APP_API;
 const apiKey = process.env.REACT_APP_API_KEY;

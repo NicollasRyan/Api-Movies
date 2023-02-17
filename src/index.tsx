@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import { Home } from "./pages/Home/intex";
 import { Movie } from "./pages/Movie";
 import { Search } from "./pages/Search";
-import { GlobalStyle } from "./styles/global";
 import { Save } from "./components/Save";
 import { SaveProvider } from "./components/Save/context/indexContext";
+
+import { GlobalStyle } from "./styles/global";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
